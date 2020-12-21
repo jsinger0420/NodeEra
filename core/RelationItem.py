@@ -4,8 +4,17 @@
 RelationItem.py provides two classes:
 1. RelationItem - manages the qgraphicsItem on the Instance Diagram using a RelLIne.  
 2. RelLine - an subtype of qGraphicsItem that draws an arc between two points.
-    Copyright: SingerLinks Consulting LLC dba NodeEra Software 2018-2019 - all rights reserved
-    Confidential Material - Do Not Distribute - SingerLinks Consulting dba NodeEra Software
+ 
+Copyright 2018-2020 SingerLinks Consulting LLC 
+
+This file is part of NodeEra.
+
+NodeEra is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+NodeEra is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with NodeEra. If not, see <https://www.gnu.org/licenses/>.
+ 
 """
 
 from math import cos, sqrt, degrees, copysign, acos, sin, radians, atan, tan

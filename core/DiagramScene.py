@@ -1,10 +1,20 @@
 #!/usr/bin/python
 ''' 
     Author: John Singer
-    Copyright: SingerLinks Consulting LLC dba NodeEra Software 2018-2020 - all rights reserved
-    Confidential Material - Do Not Distribute - SingerLinks Consulting dba NodeEra Software
-    
     The DiagramScene class is used to render diagrams with no UI so they can be saved as image files
+
+Copyright 2018-2020 SingerLinks Consulting LLC 
+
+This file is part of NodeEra.
+
+NodeEra is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+NodeEra is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with NodeEra. If not, see <https://www.gnu.org/licenses/>.
+ 
+    
+
 '''
 from PyQt5.QtCore import QPointF
 from PyQt5.QtGui import  QPainter, QImage
