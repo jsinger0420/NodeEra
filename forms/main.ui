@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NodeeraMain</class>
+ <widget class="QMainWindow" name="NodeeraMain">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>NodeEra</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normalon>:/FILE/FILE/logo32x32.jpg</normalon>
+   </iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>1</number>
+    </property>
+    <property name="leftMargin">
+     <number>1</number>
+    </property>
+    <property name="topMargin">
+     <number>1</number>
+    </property>
+    <property name="rightMargin">
+     <number>1</number>
+    </property>
+    <property name="bottomMargin">
+     <number>1</number>
+    </property>
+    <item>
+     <widget class="QStackedWidget" name="stackedPageItems">
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuNeo">
+    <property name="title">
+     <string>Schema</string>
+    </property>
+    <addaction name="actionOpen_Connection"/>
+    <addaction name="actionClose_Connection"/>
+    <addaction name="separator"/>
+    <addaction name="actionGenerate_Schema"/>
+    <addaction name="actionReset_User_Password"/>
+    <addaction name="separator"/>
+    <addaction name="actionNeo4j_Connection_Manager"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionSystem_Preferences"/>
+    <addaction name="actionLicense_Management"/>
+   </widget>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>Project</string>
+    </property>
+    <widget class="QMenu" name="menuRecent_Projects">
+     <property name="title">
+      <string>Recent Projects</string>
+     </property>
+    </widget>
+    <addaction name="actionNewProject"/>
+    <addaction name="actionOpenProject"/>
+    <addaction name="menuRecent_Projects"/>
+    <addaction name="separator"/>
+    <addaction name="actionSaveProject"/>
+    <addaction name="actionSaveProjectAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionReverse_Engineer"/>
+    <addaction name="actionForward_Engineer"/>
+    <addaction name="actionGenerate_Reports"/>
+    <addaction name="separator"/>
+    <addaction name="actionProjectProperties"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionOnline_Help"/>
+    <addaction name="separator"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuNeo"/>
+   <addaction name="menuProject"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="tbConnection">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOpen_Connection"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionOpen_Connection">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../icons/RUN and DATA TAB/Disconnected.png</normaloff>../../icons/RUN and DATA TAB/Disconnected.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open Connection...</string>
+   </property>
+  </action>
+  <action name="actionClose_Connection">
+   <property name="text">
+    <string>Close Connection</string>
+   </property>
+  </action>
+  <action name="actionNeo4j_Connection_Manager">
+   <property name="text">
+    <string>Neo4j Connection Manager...</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionSystem_Preferences">
+   <property name="text">
+    <string>System Preferences...</string>
+   </property>
+  </action>
+  <action name="actionNewProject">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionOpenProject">
+   <property name="text">
+    <string>Open...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSaveProject">
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveProjectAs">
+   <property name="text">
+    <string>Save As...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionReverse_Engineer">
+   <property name="text">
+    <string>Reverse Engineer...</string>
+   </property>
+  </action>
+  <action name="actionProjectProperties">
+   <property name="text">
+    <string>Properties...</string>
+   </property>
+  </action>
+  <action name="actionOnline_Help">
+   <property name="text">
+    <string>Online Help...</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
+   </property>
+  </action>
+  <action name="actionGenerate_Schema">
+   <property name="text">
+    <string>Generate Schema...</string>
+   </property>
+  </action>
+  <action name="actionForward_Engineer">
+   <property name="text">
+    <string>Forward Engineer...</string>
+   </property>
+  </action>
+  <action name="actionLicense_Management">
+   <property name="text">
+    <string>License Management...</string>
+   </property>
+  </action>
+  <action name="actionGenerate_Reports">
+   <property name="text">
+    <string>Generate HTML Dictionary...</string>
+   </property>
+  </action>
+  <action name="actionReset_User_Password">
+   <property name="text">
+    <string>Reset User Password...</string>
+   </property>
+  </action>
+  <action name="actionRecent1">
+   <property name="text">
+    <string>Recent1</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../icons/icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

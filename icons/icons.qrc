@@ -1,0 +1,55 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>FILE/icons8-redo.png</file>
+    <file>FILE/icons8-undo.png</file>
+    <file>RUN and DATA TAB/Commit.png</file>
+    <file>RUN and DATA TAB/Connected.png</file>
+    <file>RUN and DATA TAB/Disconnected.png</file>
+    <file>RUN and DATA TAB/Export.png</file>
+    <file>RUN and DATA TAB/GridBack.png</file>
+    <file>RUN and DATA TAB/GridEnd.png</file>
+    <file>RUN and DATA TAB/GridForward.png</file>
+    <file>RUN and DATA TAB/GridStart.png</file>
+    <file>RUN and DATA TAB/Import.png</file>
+    <file>RUN and DATA TAB/Play Property.png</file>
+    <file>RUN and DATA TAB/RollBack.png</file>
+    <file>RUN and DATA TAB/Run.png</file>
+    <file>RUN and DATA TAB/RunScript.png</file>
+    <file>RUN and DATA TAB/Stop Sign.png</file>
+  </qresource>
+  <qresource prefix="DIAGRAM">
+    <file>DIAGRAM/icons8-circular-arrow.png</file>
+    <file>DIAGRAM/icons8-cursor-pointer.png</file>
+    <file>DIAGRAM/icons8-draw.png</file>
+    <file>DIAGRAM/icons8-expand-arrows.png</file>
+    <file>DIAGRAM/icons8-hand.png</file>
+    <file>DIAGRAM/icons8-move.png</file>
+    <file>DIAGRAM/icons8-outline-of-a-circle.png</file>
+    <file>DIAGRAM/icons8-oval.png</file>
+    <file>DIAGRAM/NodeTemplate.png</file>
+    <file>DIAGRAM/icons8-sheet-of-paper.png</file>
+    <file>DIAGRAM/icons8-term.png</file>
+    
+    <file>DIAGRAM/icons8-zoom.png</file>
+    <file>DIAGRAM/icons8-zoom-in.png</file>
+    <file>DIAGRAM/icons8-zoom-out.png</file>
+  </qresource>
+  <qresource prefix="PRINT">
+    <file>PRINT/icons8-print.png</file>
+    <file>PRINT/icons8-property-script.png</file>
+  </qresource>
+  <qresource prefix="FILE">
+    <file>FILE/Close.png</file>
+    <file>FILE/comment.png</file>
+    <file>FILE/nocomment.png</file>
+    <file>FILE/CreateNew.png</file>
+    <file>FILE/DeleteFile.png</file>
+    <file>FILE/EditFile.png</file>
+    <file>FILE/Favorite File.png</file>
+    <file>FILE/Open.png</file>
+    <file>FILE/Save.png</file>
+    <file>FILE/Saveas.png</file>
+    <file>FILE/Synchronize.png</file>
+    <file>FILE/comment.png</file>
+ <file>FILE/nocomment.png</file> <file>FILE/NodeEraFullLogo.png</file> <file>FILE/logo32x32.jpg</file> <file>FILE/NodeEraLogoIcon.png</file> </qresource>
+</RCC>
