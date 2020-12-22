@@ -1,3 +1,9 @@
+# batch files
+*.bat
+
+# qt files
+*.ui
+
 # eric files
 *.e4p
 
