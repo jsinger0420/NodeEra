@@ -105,7 +105,6 @@ class SchemaModel():
         query the graph to find all schema objects
         '''
         self.initModel()
-#        QApplication.setOverrideCursor(Qt.WaitCursor)
         rc, msg = self.getIndexes()
         if rc == False:
             return rc, msg

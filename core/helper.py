@@ -6,11 +6,10 @@ Module implementing helper functions.
     Confidential Material - Do Not Distribute - SingerLinks Consulting dba NodeEra Software
 """
 import re
-#from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet
 
 from PyQt5.QtCore import QPoint, QRect, QEvent, QSettings, QItemSelectionModel
 from PyQt5.QtWidgets import QMessageBox, QItemDelegate, QComboBox, QApplication, QStyle,  QStyledItemDelegate, QStyleOptionButton, QInputDialog, QLineEdit, QAbstractItemView
-#from PyQt5.Qt import QPrinter
 from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.Qsci import QsciLexerCustom
 from PyQt5.QtGui import QColor, QFont
@@ -103,20 +102,20 @@ class Helper():
         self.neoTypeFunc = NeoTypeFunc()
         
     def putText(self, a):
-#        k = b'PSzt9FgcnwrpxIa6tt3HED-s-JyMPCHL0LlmXmjhX-4='
-#        doIt = Fernet(k)
-#        b = a.encode('utf-8')
-#        c = doIt.encrypt(b)
-#        return str(c,'utf-8')
-        return str(a)
+        k = b'PSzt9FgcnwrpxIa6tt3HED-s-JyMPCHL0LlmXmjhX-4='
+        doIt = Fernet(k)
+        b = a.encode('utf-8')
+        c = doIt.encrypt(b)
+        return str(c,'utf-8')
+#        return str(a)
         
     def getText(self, a):
-#        k = b'PSzt9FgcnwrpxIa6tt3HED-s-JyMPCHL0LlmXmjhX-4='
-#        doIt = Fernet(k)
-#        b = a.encode('utf-8')
-#        c = doIt.decrypt(b)
-#        return str(c,'utf-8')
-        return str(a)
+        k = b'PSzt9FgcnwrpxIa6tt3HED-s-JyMPCHL0LlmXmjhX-4='
+        doIt = Fernet(k)
+        b = a.encode('utf-8')
+        c = doIt.decrypt(b)
+        return str(c,'utf-8')
+#        return str(a)
         
     def slugify(self, aName):
         newName = "".join(x for x in aName if x.isalnum() )  + "_file"

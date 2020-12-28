@@ -72,7 +72,6 @@
      <string>Settings</string>
     </property>
     <addaction name="actionSystem_Preferences"/>
-    <addaction name="actionLicense_Management"/>
    </widget>
    <widget class="QMenu" name="menuProject">
     <property name="title">

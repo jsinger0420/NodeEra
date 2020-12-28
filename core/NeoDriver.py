@@ -2,7 +2,7 @@
 """
 - The NeoDriver class encapsulates all calls to the neo4j V4 python driver.  This class only makes use of the
 native python driver.
-- This replaces the original neocon class which encorporated a mixture of the native pythin  driver and py2neo
+- This replaces the original neocon class which encorporated a mixture of the native python  driver and py2neo
 
     Author: John Singer
  
@@ -553,9 +553,9 @@ class NeoDriver():
                 uri = "bolt://{}:{}".format(self.neoDict["host"], self.neoDict["port"])
                 # create a base driver graphdatabase object, this verifies connectivity and authentication and will produce usable error messages if anything is wrong.
                 self.myDriver = None
-                
-                self.logScript('aDriver = GraphDatabase.driver({},auth=({},{})'.format(uri, self.neoDict['userid'], self.neoDict['password']))
-                self.myDriver = GraphDatabase.driver(uri,auth=(self.neoDict['userid'], self.neoDict['password']))
+                pw = self.helper.getText(self.neoDict['password'])
+                self.logScript('aDriver = GraphDatabase.driver({},auth=({},{})'.format(uri, self.neoDict['userid'], pw))
+                self.myDriver = GraphDatabase.driver(uri,auth=(self.neoDict['userid'], pw))
                 self.logDriverStatus()
                 
                 rc = True 

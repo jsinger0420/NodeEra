@@ -18,8 +18,6 @@ import sys
 import os
 import logging
 import ntpath
-#import datetime
-#from datetime import timedelta
 
 from PyQt5.QtCore import pyqtSlot, QSettings, QSize, QPoint, QFileInfo, pyqtSignal
 from PyQt5.QtWidgets import QMainWindow, QAction, QFileDialog, QApplication
@@ -27,7 +25,6 @@ from PyQt5.QtGui import QIcon, QPixmap
 
 from core.helper import Helper, PageSetup
 from core.pageitem import PageItem
-#from core.License import License
 from core.NeoDriver import NeoDriver
 
 from forms.Ui_main import Ui_NodeeraMain
@@ -43,7 +40,6 @@ from forms.TRelFormatDlg import TRelFormat
 from forms.OnlineHelpDLG import OnlineHelpDLG
 from forms.HelpAboutDLG import HelpAboutDLG
 from forms.GenerateSchemaDlg import GenerateSchemaDlg
-#from forms.LicenseMgtDLG import LicenseMgtDLG
 from forms.HelloUserDlg import HelloUserDlg
 
 
@@ -56,50 +52,6 @@ PROPERTY, REQUIRED, PK = range(3)
 productName = 'NodeEra' 
 currentVersion = '2020.12.01' 
 
-
-## license api commands
-#ACTIVATE='activate_license'
-#CHECK='check_license'
-#VERSION='get_version'
-#DEACTIVATE='deactivate_license'
-
-## menu access levels
-#RESTRICTED = 0
-#LOCALONLY = 1
-#PRO = 2
-
-# MUST UNCOMMENT THE VERSION YOU ARE TESTING/COMPILING
-# set LOCAL license and product info here
-#licenseURL = "l2q.aa7.myftpupload.com:80"
-#licenseURL = "www.noderapro.com:80"
-#itemID = '1865'
-#currentVersion = '01.09'
-#productName = 'NodeEra Local MAC'   # also change in nodeera.py
-#productName = 'NodeEra Local WIN'   # also change in nodeera.py
-#menuAccess = "LocalOnly"
-
-# set PRO license and product info here
-#licenseURL = "www.noderapro.com:80"
-#itemID = '810'
-#currentVersion = '01.09'           # also change in nodeera.py
-#productName = 'NodeEra Pro MAC'   # also change in nodeera.py
-##productName = 'NodeEra Pro Win'   # also change in nodeera.py
-#menuAccess = "Pro"
-
-# set PRO BETA license and product info here
-#licenseURL = "www.noderapro.com:80"
-#itemID = '1459'
-#currentVersion = '01.09'           # also change in nodeera.py
-#productName = 'NodeEra Pro BETA'   # also change in nodeera.py
-#menuAccess = "Pro"
-
-# set PRO TRIAL license and product info here
-#licenseURL = "www.noderapro.com:80"
-#itemID = '1851'
-#currentVersion = '01.09'           # also change in nodeera.py
-##productName = 'NodeEra Pro Trial WIN'   # also change in nodeera.py
-#productName = 'NodeEra Pro Trial Mac'   # also change in nodeera.py
-#menuAccess = "Pro"
 
 def my_excepthook(type, value, tback):
     '''
@@ -170,27 +122,6 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
         self.resize(self.winSize)
         self.move(self.position)
 
-#        # menu access determines what functionality you have
-#        if menuAccess == "LocalOnly":
-#            self.menuAccess = LOCALONLY
-#        elif menuAccess == "Pro":
-#            self.menuAccess = PRO
-#        else:
-#            self.menuAccess = LOCALONLY
-        
-#        # see if license is activated
-#        self.myLicense = None
-#        self.getLicenseData()  
-#        
-#        # check if license is about to expire
-#        self.checkLicenseExpry()
-#        
-#        # adjust menu items
-#        self.setMenuAccess()    
-        
-        # check to see that license is active and unexpired before opening last connection
-#        if not self.menuAccess == RESTRICTED:
-
         # display welcome message
         self.displayWelcomeMsg.emit("Welcome To NodeEra")
         
@@ -198,13 +129,15 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
         try:
             lastNeoConName = self.settings.value("NeoCon/LastUsed") 
             if not lastNeoConName  is None:
-
                 neoDict=self.settings.value("NeoCon/connection/{}".format(lastNeoConName))
                 self.openConnection(neoConName=lastNeoConName,  neoConDict=neoDict)  
+                self.displayWelcomeMsg.emit("Opened most recent connection: {}".format(lastNeoConName))
+                
             self.setTitle(lastNeoConName)
+            
         except:
             self.logMsg("Unable to open last connection: {}".format(lastNeoConName))
-            
+            self.displayWelcomeMsg.emit("Unable to open last connection: {}".format(lastNeoConName))
         # auto close the welcome dialog box
         self.closeWelcomeMsg.emit()
             
@@ -238,30 +171,6 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
         except:
             self.currentVersion = currentVersion
             self.settings.setValue("License/currentVersion",self.currentVersion)
-        
-#        try:
-#            self.itemID = self.settings.value("License/ItemID")
-#            if self.itemID is None:
-#                self.itemID = itemID
-#                self.settings.setValue("License/ItemID",self.itemID)
-#        except:
-#            self.itemID = itemID
-#            self.settings.setValue("License/ItemID",self.itemID)
-            
-#        try:
-#            self.licenseURL = self.settings.value("License/URL")
-#            if self.licenseURL is None:
-#                self.licenseURL = licenseURL
-#                self.settings.setValue("License/URL",self.licenseURL)
-#        except:
-#            self.licenseURL = licenseURL
-#            self.settings.setValue("License/URL",self.licenseURL)    
-
-#        # get the license key if it's there, otherwise set it to None
-#        try:
-#            self.licenseKey = self.settings.value("License/Key")
-#        except:
-#            self.licenseKey = None
             
         try:
             self.winSize = self.settings.value("MainWindow/Size")
@@ -385,85 +294,7 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
                 
         self.settings.endGroup()
         
-####################################################################
-###   license management functions
-####################################################################
-#    def getLicenseData(self, ):
-#        # self.menuAccess has been initialized based on the product version, this will change it to restricted if license has expired
-#        # run a CHECK api call to get license data
-#        if not self.licenseKey is None:
-#            # call the license check api
-#            self.myLicense = License(url=self.licenseURL, licenseKey=self.licenseKey, itemID=self.itemID)
-#            self.logMsg("Begin License API call - {}".format(CHECK))
-#            rc, msg = self.myLicense.checkLicense()
-#            self.logMsg("End License API call - {}. {}-{}".format(CHECK, rc, msg))
-#            
-#            # get the results
-#            self.licenseStatus = self.myLicense.responseDict.get("license", "No Status")
-#            errorStatus = self.myLicense.responseDict.get("success", None)
-#            errorMsg = self.myLicense.responseDict.get("error", None)
-#            
-#            # welcome user
-#            customerName = self.myLicense.responseDict.get("customer_name", None)
-#            if not customerName is None:
-#                self.displayWelcomeMsg.emit("Welcome {}!".format(customerName))
-#            # if it's active thats good
-#            if (rc == True and self.licenseStatus in [ "active", "valid"]):
-#                self.displayWelcomeMsg.emit("Check License: Success")
-#                # see if the expry date has changed and update the expry date in settings.
-#                if self.expirationDate != self.myLicense.responseDict.get("expires", "No expiration date set"):
-#                    self.settings.setValue("License/expirationDate",self.helper.putText(self.myLicense.responseDict.get("expires", "No expiration date set")))
-##                    self.settings.setValue("License/expirationDate",self.myLicense.responseDict.get("expires", "No expiration date set"))
-#            # any other license status is bad
-#            elif (rc == True and self.licenseStatus in ["deactivated", "inactive", "No Status", "disabled"]):
-#                self.menuAccess = RESTRICTED
-#                errorStatus = self.myLicense.responseDict.get("success", None)
-#                errorMsg = self.myLicense.responseDict.get("error", None)
-#                if not errorMsg is None:
-#                    showErrMsg = "License Check Error {}-{}.".format(errorStatus, errorMsg)
-#                else:
-#                    showErrMsg = ""
-#                self.displayWelcomeMsg.emit("Check License: The License status is {}. {} Please activate your license. See menu Settings / License Management".format(self.licenseStatus, showErrMsg))
-#                self.logMsg("The License status is {}. {} Please activate your license. See menu Settings / License Management ".format(self.licenseStatus, showErrMsg))
-#            # unknown license status so log it and ignore
-#            elif (rc == True):
-#                self.logMsg("Unknown license status - {}".format(str(self.licenseStatus)))
-#            # check license api call failed for some reason.
-#            elif (rc == False):
-#                # for now we log this and the product keeps functioning
-#                self.logMsg("License API check failed - {}".format(msg))
-#            # this shouldn't happen
-#            else:
-#                self.logMsg("License API check failed - {}".format(msg))
-#
-#        else:
-#            # license has not been activated yet
-#            self.logMsg("No license key found in settings. Access Restricted")
-#            self.menuAccess = RESTRICTED    
-#            self.displayWelcomeMsg.emit("License Check: License not active. Please activate license")
 
-#    def checkLicenseExpry(self, ):
-#        
-#        # warn the user if their license will expire in the next 30 days
-#        try:
-#            if self.expirationDate.find(" ") > -1:
-#                dateOnly = self.expirationDate[0:self.expirationDate.find(" ")]
-#            else:
-#                dateOnly = self.expirationDate 
-#            testDate = datetime.datetime.strptime(dateOnly, "%Y-%m-%d") 
-#            # test if expired
-#            if testDate < datetime.datetime.now():
-#                self.menuAccess = RESTRICTED
-#                self.logMsg("WARNING - Your license expired on {}. Please visit www.nodeera.com and renew your subscription. ".format(self.expirationDate))
-#                self.displayWelcomeMsg.emit("WARNING - Your license expired on {}. Please visit www.nodeera.com and renew your subscription.".format(self.expirationDate))
-#            # test if close to expiration
-#            elif testDate < datetime.datetime.now() + timedelta(days=30):
-#                self.logMsg("WARNING - Your license will expire on {}. Please renew your subscription before using NodeEra.  Use Settings / License Management menu option.".format(self.expirationDate))
-#                self.displayWelcomeMsg.emit("WARNING - Your license will expire on {}. Please renew your subscription before using NodeEra.  Use Settings / License Management menu option.".format(self.expirationDate))
-#        except:
-#                self.logMsg("Error checking license expiration date - {}".format(self.expirationDate))
-#        
-        
     def setTitle(self, filename):
         self.setWindowTitle("{} - {}".format(productName, filename))
 
@@ -506,29 +337,7 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
                             action.setEnabled(False)
                         else:
                             action.setEnabled(True) 
-        finally:
-            self.disableProduct()
-    
-
-#    def disableProduct(self, ):
-#        # disable menus if license is restricted
-#        if self.menuAccess == RESTRICTED:
-#            # this renders the product unusable
-#            for action in self.menuProject.actions():
-#                if type(action) == QAction and not action.isSeparator():
-#                    action.setEnabled(False)                        
-#            for action in self.menuNeo.actions():
-#                if type(action) == QAction and not action.isSeparator():
-#                    if action.text() in ["Exit"]:
-#                        action.setEnabled(True)
-#                    else:
-#                        action.setEnabled(False)                     
-#            for action in self.menuSettings.actions():
-#                if type(action) == QAction and not action.isSeparator():
-#                    if action.text() in ["License Management..."]:
-#                        action.setEnabled(True)
-#                    else:
-#                        action.setEnabled(False)         
+                            
                         
     ########################################################################
     #     NEO CONNECTION Dropdown Menu Actions
@@ -553,13 +362,6 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
         '''
         User selects a connection to open so create the schema page and display it
         '''
-#        if self.menuAccess == LOCALONLY:
-#            if neoConDict.get("host", "nohost") == "localhost":
-#                pass
-#            else:
-#                self.helper.displayErrMsg("Open Connection", "Error - NodeEra Local Edition may only open connections on host = localhost")
-#                return
-#            
         # set the last used neocon in system settings
         self.settings.setValue("NeoCon/LastUsed", neoConName )
         # create a new toolbar button and add it to the toolbar
@@ -615,7 +417,6 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
         """
         Close the active connection and remove the page from the UI
         """
-#        print("on action close connection triggered")
         if self.curPage:
             if self.curPage in self.pageDict:
                 # must find the schema tab and tell it to close, it will tell all other tabs to close.  schema tab is always the first one (index=0)
@@ -865,23 +666,6 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
                 curPageWidget.tabPage.currentWidget().forwardEngineerGraph()
             else:
                 self.logMsg("User requested to forward engineer but current tab is not a Project")
-    
-#    @pyqtSlot()
-#    def on_actionLicense_Management_triggered(self):
-#        """
-#        User selects Help / About menu item.  Display the about dialog box
-#        """
-#        d = LicenseMgtDLG(self)
-#        if d.exec_():
-#            # set menu access to normal
-#            self.menuAccess = menuAccess
-#            # reset to restriced if license status is bad
-#            if d.licenseStatus  in ["deactivated", "inactive", "No Status", "disabled"]:
-#                self.menuAccess = RESTRICTED
-#            # reset to restricted if license date has expired
-#            self.checkLicenseExpry()
-#            # adjust menu items
-#            self.setMenuAccess()    
     
     @pyqtSlot()
     def on_actionGenerate_Reports_triggered(self):
