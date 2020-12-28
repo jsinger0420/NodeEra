@@ -34,7 +34,9 @@ def parseCommandLine():
     return args
 
 def setupLogging(logdir):
-#    logfile = logdir + r"\\NodeEra_" + '{:%Y-%m-%d-%H%M%S}'.format(datetime.now()) + ".log"
+    '''
+    start logging and prune old log files
+    '''
     logfile = logdir + r"/NodeEra_" + '{:%Y-%m-%d-%H%M%S}'.format(datetime.now()) + ".log"
     FORMAT='%(asctime)s %(levelname)s:%(message)s'  
     try:
@@ -54,7 +56,6 @@ def deleteLogFiles(path=None, numDays=None):
             f = os.path.join(path, f)
             if os.stat(f).st_mtime < criticalTime:
                 if os.path.isfile(f):
-#                    print(str(f))
                     os.remove(f)
     except Exception as e:
         raise loggingsetupError(path,"Error Deleting Old Log Files - {}".format(str(e)))    
@@ -71,19 +72,10 @@ def main():
     # create app object and initialize it
     app = QApplication(sys.argv)
     app.setOrganizationName("NodeEra Software")
-    app.setOrganizationDomain("noderapro.com")
-    ########################################################################## set this for each version
-#    app.setApplicationName("NodeEra Local WIN")
-#    app.setApplicationName("NodeEra Local MAC")
+    app.setOrganizationDomain("singerlinks.com")
 
-#    app.setApplicationName("NodeEra Pro WIN")
-    app.setApplicationName("NodeEra Pro MAC")
-    
-#    app.setApplicationName("NodeEra Pro Trial WIN")
-#    app.setApplicationName("NodeEra Pro Trial Mac")
-
-    app.setApplicationVersion("1.09")
-    ##########################################################################
+    app.setApplicationName("NodeEra")
+    app.setApplicationVersion("2020.12.01")
     app.setStyleSheet(
     """
     QToolButton#conbtn { background:white }
