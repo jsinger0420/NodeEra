@@ -16,12 +16,14 @@ You should have received a copy of the GNU General Public License along with Nod
 """
 import sys
 from PyQt5.QtCore import pyqtSlot, Qt
-from PyQt5.QtWidgets import QDialog, QApplication
+from PyQt5.QtWidgets import QDialog
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtWidgets
 from PyQt5.sip import SIP_VERSION_STR
 from PyQt5.Qt import PYQT_VERSION_STR
 from PyQt5.QtCore import QT_VERSION_STR
+
+from neo4j.meta import version
 
 from .Ui_HelpAboutDLG import Ui_HelpAboutDLG
 
@@ -50,9 +52,11 @@ class HelpAboutDLG(QDialog, Ui_HelpAboutDLG):
         self.txtAbout.setText('''
 NodeEra is the worlds leading property graph database design and management tool supporting the Neo4j Graph Database.
         
-Copyright 2019 SingerLinks ConsultinQApplicationg LLC dba NodeEra Software all rights reserved.
-        
-Your use of this software is governed by the license agreement which can be viewed at www.noderapro.com/nodeera-software-license/
+NodeEra is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+NodeEra is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with NodeEra. If not, see <https://www.gnu.org/licenses/>.
 
 ''' ) 
         self.txtAbout.append("running on platform: {}".format(sys.platform) )
@@ -61,6 +65,7 @@ Your use of this software is governed by the license agreement which can be view
         self.txtAbout.append( "Qt version: {}".format(QT_VERSION_STR)) 
         self.txtAbout.append( "PyQt version: {}".format(PYQT_VERSION_STR)) 
         self.txtAbout.append( "sip version: {}".format(SIP_VERSION_STR)) 
+        self.txtAbout.append( "Neo4j Python Driver version: {}".format(version)) 
     
 
     @pyqtSlot()

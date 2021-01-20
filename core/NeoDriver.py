@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-- The NeoDriver class encapsulates all calls to the neo4j V4 python driver.  This class only makes use of the
-native python driver.
-- This replaces the original neocon class which encorporated a mixture of the native python  driver and py2neo
+The NeoDriver class encapsulates all calls to the neo4j V4 python driver.  
+This class only makes use of the native python driver.
 
     Author: John Singer
  

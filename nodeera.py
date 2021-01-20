@@ -75,7 +75,7 @@ def main():
     app.setOrganizationDomain("singerlinks.com")
 
     app.setApplicationName("NodeEra")
-    app.setApplicationVersion("2020.12.01")
+    app.setApplicationVersion("2021.01.01")
     app.setStyleSheet(
     """
     QToolButton#conbtn { background:white }

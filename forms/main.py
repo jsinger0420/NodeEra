@@ -17,7 +17,9 @@ You should have received a copy of the GNU General Public License along with Nod
 import sys
 import os
 import logging
+#import time
 import ntpath
+import requests
 
 from PyQt5.QtCore import pyqtSlot, QSettings, QSize, QPoint, QFileInfo, pyqtSignal
 from PyQt5.QtWidgets import QMainWindow, QAction, QFileDialog, QApplication
@@ -50,8 +52,8 @@ LABEL, REQUIRED = range(2)
 PROPERTY, REQUIRED, PK = range(3)
 
 productName = 'NodeEra' 
-currentVersion = '2020.12.01' 
-
+currentVersion = '2021.01.01' 
+appPage = 'www.singerlinks.com/nodeera/nodeera-20210101'
 
 def my_excepthook(type, value, tback):
     '''
@@ -125,6 +127,26 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
         # display welcome message
         self.displayWelcomeMsg.emit("Welcome To NodeEra")
         
+        # display announcement message from website
+        try:
+            url = 'https://{}'.format(appPage)
+            response = requests.get(url)
+            if response.status_code == 200:
+                self.displayWelcomeMsg.emit("success")
+                print(response.text)
+                start = response.text.find('class="display"')+16
+                end = response.text.find('</p>', start)
+                self.displayWelcomeMsg.emit(response.text[start:end])
+                self.displayWelcomeMsg.emit("For more information see www.singerlinks.com/nodeera")
+#                print(response.text[start:end])
+            else:
+                self.logMsg("Unable to access announcement page:{} http response:{}".format(appPage, response.status_code))
+                self.displayWelcomeMsg.emit("Unable to access announcement page:{} http response:{}".format(appPage, response.status_code))
+
+        except Exception as e:
+            self.logMsg("Error accessing announcement page - {}".format(repr(e)))
+            self.displayWelcomeMsg.emit("Error accessing announcement page - {}".format(repr(e)))
+        
         # auto open last used connection
         try:
             lastNeoConName = self.settings.value("NeoCon/LastUsed") 
@@ -138,8 +160,10 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
         except:
             self.logMsg("Unable to open last connection: {}".format(lastNeoConName))
             self.displayWelcomeMsg.emit("Unable to open last connection: {}".format(lastNeoConName))
+        
         # auto close the welcome dialog box
-        self.closeWelcomeMsg.emit()
+#        time.sleep(5)
+#        self.closeWelcomeMsg.emit()
             
     def logMsg(self, msg):
         if logging:

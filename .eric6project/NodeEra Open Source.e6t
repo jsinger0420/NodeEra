@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
 <!-- eric6 tasks file for project NodeEra Open Source -->
-<!-- Saved: 2020-12-28, 11:51:31 -->
+<!-- Saved: 2021-01-20, 10:47:56 -->
 <Tasks version="6.0">
   <ProjectScanFilter></ProjectScanFilter>
+  <Task priority="1" completed="False" type="1" uid="{9a8d34b6-9823-4a7f-8525-d944a5359d7c}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2021-01-20, 09:41:19</Created>
+    <Resource>
+      <Filename>forms/TPPropertyBox.py</Filename>
+      <Linenumber>779</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="1" uid="{ede97d1e-769a-40d0-af8b-e5d41c99734c}">
+    <Summary>TODO: not implemented yet</Summary>
+    <Description></Description>
+    <Created>2021-01-20, 09:41:19</Created>
+    <Resource>
+      <Filename>forms/TPPropertyBox.py</Filename>
+      <Linenumber>787</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="2" uid="{6f400b98-7588-4ddd-8d66-4ad8940d1904}">
+    <Summary>WARNING: Any manual changes made to this file will be lost when pyuic5 is</Summary>
+    <Description></Description>
+    <Created>2021-01-20, 09:41:20</Created>
+    <Resource>
+      <Filename>forms/Ui_OnlineHelpDLG.py</Filename>
+      <Linenumber>7</Linenumber>
+    </Resource>
+  </Task>
+  <Task priority="1" completed="False" type="2" uid="{388574a5-23f6-4362-bf27-92490bb6cf91}">
+    <Summary>WARNING: Any manual changes made to this file will be lost when pyuic5 is</Summary>
+    <Description></Description>
+    <Created>2021-01-20, 09:41:20</Created>
+    <Resource>
+      <Filename>forms/Ui_main.py</Filename>
+      <Linenumber>7</Linenumber>
+    </Resource>
+  </Task>
 </Tasks>

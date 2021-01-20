@@ -14,8 +14,9 @@ NodeEra is distributed in the hope that it will be useful, but WITHOUT ANY WARRA
 You should have received a copy of the GNU General Public License along with NodeEra. If not, see <https://www.gnu.org/licenses/>.
  
 """
+from PyQt5.QtGui import QDesktopServices
 
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import pyqtSlot, QUrl
 from PyQt5.QtWidgets import QDialog
 
 from .Ui_OnlineHelpDLG import Ui_OnlineHelpDLG
@@ -34,10 +35,25 @@ class OnlineHelpDLG(QDialog, Ui_OnlineHelpDLG):
         """
         super(OnlineHelpDLG, self).__init__(parent)
         self.setupUi(self)
-    
+        
+        self.txtHelp.setHtml('''
+        <p><b>NodeEra Help</b></p>
+        <p></p>
+        <p>The NodeEra Users manual and how to videos are available online.  Click the Online Help button below to open the help webpage or paste https://singerlinks.com/nodeera-user-manual into your web browser</p>
+        ''')
+        
+
+        
     @pyqtSlot()
     def on_btnClose_clicked(self):
         """
         Slot documentation goes here.
         """
         QDialog.accept(self)
+    
+    @pyqtSlot()
+    def on_btnHelp_clicked(self):
+        """
+        Slot documentation goes here.
+        """
+        QDesktopServices.openUrl(QUrl("https://singerlinks.com/nodeera-user-manual/"))   
