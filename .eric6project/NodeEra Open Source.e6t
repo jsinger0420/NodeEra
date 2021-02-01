@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-6.0.dtd">
 <!-- eric6 tasks file for project NodeEra Open Source -->
-<!-- Saved: 2021-02-01, 12:58:06 -->
+<!-- Saved: 2021-02-01, 13:29:19 -->
 <Tasks version="6.0">
   <ProjectScanFilter></ProjectScanFilter>
-  <Task priority="1" completed="False" type="1" uid="{346a3499-349d-43d4-b100-aab63eeeebcf}">
+  <Task priority="1" completed="False" type="1" uid="{79f3094d-7edd-4783-8618-b0d4ba78ed87}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2021-02-01, 12:12:28</Created>
+    <Created>2021-02-01, 13:28:24</Created>
     <Resource>
       <Filename>forms/TPPropertyBox.py</Filename>
       <Linenumber>779</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="1" uid="{423fea97-8e89-4a88-85e2-d361e2c13b5c}">
+  <Task priority="1" completed="False" type="1" uid="{91df8278-7819-41f0-9c09-c385a469d547}">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2021-02-01, 12:12:28</Created>
+    <Created>2021-02-01, 13:28:24</Created>
     <Resource>
       <Filename>forms/TPPropertyBox.py</Filename>
       <Linenumber>787</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="2" uid="{30578ca2-366b-4027-ad8a-ff526abcd0b9}">
+  <Task priority="1" completed="False" type="2" uid="{eae6547e-b98e-4d46-89b0-c91ac4aecc23}">
     <Summary>WARNING: Any manual changes made to this file will be lost when pyuic5 is</Summary>
     <Description></Description>
-    <Created>2021-02-01, 12:12:29</Created>
+    <Created>2021-02-01, 13:28:24</Created>
     <Resource>
       <Filename>forms/Ui_OnlineHelpDLG.py</Filename>
       <Linenumber>7</Linenumber>
     </Resource>
   </Task>
-  <Task priority="1" completed="False" type="2" uid="{13911950-a84c-4cc4-9d36-539cf38d3cd5}">
+  <Task priority="1" completed="False" type="2" uid="{04da5382-7952-4857-b53f-07e34a4cb5c5}">
     <Summary>WARNING: Any manual changes made to this file will be lost when pyuic5 is</Summary>
     <Description></Description>
-    <Created>2021-02-01, 12:12:30</Created>
+    <Created>2021-02-01, 13:28:25</Created>
     <Resource>
       <Filename>forms/Ui_main.py</Filename>
       <Linenumber>7</Linenumber>
