@@ -5,7 +5,6 @@
 *.ui
 
 # eric files
-.eric6project/
 *.e4p
 *.e4q
 *.e6t
