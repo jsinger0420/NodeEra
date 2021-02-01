@@ -132,13 +132,10 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
             url = 'https://{}'.format(appPage)
             response = requests.get(url)
             if response.status_code == 200:
-                self.displayWelcomeMsg.emit("success")
-                print(response.text)
                 start = response.text.find('class="display"')+16
                 end = response.text.find('</p>', start)
                 self.displayWelcomeMsg.emit(response.text[start:end])
                 self.displayWelcomeMsg.emit("For more information see www.singerlinks.com/nodeera")
-#                print(response.text[start:end])
             else:
                 self.logMsg("Unable to access announcement page:{} http response:{}".format(appPage, response.status_code))
                 self.displayWelcomeMsg.emit("Unable to access announcement page:{} http response:{}".format(appPage, response.status_code))
@@ -153,6 +150,7 @@ class NodeeraMain(QMainWindow, Ui_NodeeraMain):
             if not lastNeoConName  is None:
                 neoDict=self.settings.value("NeoCon/connection/{}".format(lastNeoConName))
                 self.openConnection(neoConName=lastNeoConName,  neoConDict=neoDict)  
+                self.displayWelcomeMsg.emit(" ")
                 self.displayWelcomeMsg.emit("Opened most recent connection: {}".format(lastNeoConName))
                 
             self.setTitle(lastNeoConName)
