@@ -40,8 +40,6 @@ def parseCommandLine():
     parser.add_argument("-b", help="Enable beta functionality.", action="store_true")    
     parser.parse_args()
     args = parser.parse_args()
-    
-    
     return args
 
 def setupLogging(logdir):
