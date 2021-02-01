@@ -41,6 +41,7 @@ def parseCommandLine():
     parser.parse_args()
     args = parser.parse_args()
     
+    
     return args
 
 def setupLogging(logdir):
